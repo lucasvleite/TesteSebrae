@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSebrae.Dominio", "src\TesteSebrae.Dominio\TesteSebrae.Dominio.csproj", "{15B01C36-271C-44DB-BBC6-BA2459DE758D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteSebrae.Dominio", "src\TesteSebrae.Dominio\TesteSebrae.Dominio.csproj", "{15B01C36-271C-44DB-BBC6-BA2459DE758D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSebrae.Infra", "src\TesteSebrae.Infra\TesteSebrae.Infra.csproj", "{BE1CB5B3-AB08-4CE5-ADB4-5281D2368FD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteSebrae.Infra", "src\TesteSebrae.Infra\TesteSebrae.Infra.csproj", "{BE1CB5B3-AB08-4CE5-ADB4-5281D2368FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSebrae.Servicos", "src\TesteSebrae.Servicos\TesteSebrae.Servicos.csproj", "{3827F597-ED04-43EA-BDDE-01B2B1D7ED59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteSebrae.Servicos", "src\TesteSebrae.Servicos\TesteSebrae.Servicos.csproj", "{3827F597-ED04-43EA-BDDE-01B2B1D7ED59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSebrae.WebApi", "src\TesteSebrae.WebApi\TesteSebrae.WebApi.csproj", "{5B44C75D-019F-4D32-A39B-5F58761D286B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteSebrae.WebApi", "src\TesteSebrae.WebApi\TesteSebrae.WebApi.csproj", "{5B44C75D-019F-4D32-A39B-5F58761D286B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
