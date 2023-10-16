@@ -1,4 +1,10 @@
+using TesteSebrae.Servicos;
+using TesteSebrae.Servicos.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Services.AddTransient(typeof(IRequisicaoViaCep<>), typeof(RequisicaoViaCep<>));
 
 // Add services to the container.
 
