@@ -1,21 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using TesteSebrae.Dominio;
 
 namespace TesteSebrae.Infra
 {
     public class Contexto : DbContext
     {
-        private const string NomeBaseDados = "TesteSebrae";
+        public Contexto(DbContextOptions<Contexto> options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseInMemoryDatabase(NomeBaseDados);
-        }
+
+        public DbSet<Conta> Contas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfigurationsFromAssembly(typeof(Contexto).Assembly);
             base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

@@ -28,16 +28,17 @@ namespace TesteSebrae.Infra
             return entidade;
         }
 
-        public async Task Deleta(Guid id, CancellationToken cancellationToken = default)
+        public async Task<bool> Deleta(Guid id, CancellationToken cancellationToken = default)
         {
-            T? entidade = await ProcuraPeloId(id, cancellationToken);
+            var entidade = await ProcuraPeloId(id, cancellationToken);
             if (entidade != null)
             {
-                await Deleta(entidade, cancellationToken);
+                return await Deleta(entidade, cancellationToken);
             }
+            return false;
         }
 
-        public async Task Deleta(T entidade, CancellationToken cancellationToken = default)
+        public async Task<bool> Deleta(T entidade, CancellationToken cancellationToken = default)
         {
             if (Contexto.Entry(entidade).State == EntityState.Detached)
             {
@@ -45,6 +46,7 @@ namespace TesteSebrae.Infra
             }
             Tabela.Remove(entidade);
             await Contexto.SaveChangesAsync(cancellationToken);
+            return true;
         }
 
         public async Task Atualiza(T entidade, CancellationToken cancellationToken = default)
