@@ -8,9 +8,9 @@ namespace TesteSebrae.Infra.Interfaces
 
         Task<T> Adiciona(T entidade, CancellationToken cancellationToken = default);
 
-        Task Deleta(Guid id, CancellationToken cancellationToken = default);
+        Task<bool> Deleta(Guid id, CancellationToken cancellationToken = default);
 
-        Task Deleta(T entidade, CancellationToken cancellationToken = default);
+        Task<bool> Deleta(T entidade, CancellationToken cancellationToken = default);
 
         Task Atualiza(T entidade, CancellationToken cancellationToken = default);
 
