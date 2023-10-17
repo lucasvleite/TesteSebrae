@@ -45,10 +45,9 @@ namespace TesteSebrae.Servicos
             return await _repositorio.Deleta(conta);
         }
 
-        public async Task<Conta> ProcuraPeloId(Guid id)
+        public async Task<Conta?> ProcuraPeloId(Guid id)
         {
-            var conta = await _repositorio.ProcuraPeloId(id);
-            return conta ?? new();
+            return await _repositorio.ProcuraPeloId(id);
         }
     }
 }

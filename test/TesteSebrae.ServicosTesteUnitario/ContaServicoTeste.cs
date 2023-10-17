@@ -168,5 +168,45 @@ namespace TesteSebrae.ServicosTesteUnitario
             // Assert
             Assert.False(resultado);
         }
+
+        [Fact]
+        public async Task ProcuraPeloId_ExisteIdNaBase_RetornaTrue()
+        {
+            // Arrange
+            var resultadoEsperado = ContaDadosFake.ContaFake();
+            var id = resultadoEsperado.Id;
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.ProcuraPeloId(id, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(resultadoEsperado);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.ProcuraPeloId(id);
+
+            // Assert
+            Assert.Equal(resultado, resultadoEsperado);
+        }
+
+        [Fact]
+        public async Task ProcuraPeloId_NaoExisteIdNaBase_RetornaFalse()
+        {
+            // Arrange
+            var contaFake = ContaDadosFake.ContaFake();
+            var id = Guid.NewGuid();
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.ProcuraPeloId(id, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(null as Conta);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.ProcuraPeloId(id);
+
+            // Assert
+            Assert.Null(resultado);
+        }
     }
 }
