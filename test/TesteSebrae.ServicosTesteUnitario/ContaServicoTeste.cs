@@ -43,14 +43,14 @@ namespace TesteSebrae.ServicosTesteUnitario
 
             var contaRequisicao = ContaDadosFake.ContaFake();
             contaRequisicao.Id = Guid.Empty;
-            var guid = Guid.NewGuid();
+            var id = Guid.NewGuid();
 
             // Act
-            await servico.Atualiza(guid, contaRequisicao);
+            await servico.Atualiza(id, contaRequisicao);
 
             // Assert
             repositorioSimulado.Verify(v => v.Atualiza(It.Is<Conta>(c => c.Id != Guid.Empty), It.IsAny<CancellationToken>()), Times.Once());
-            Assert.True(contaRequisicao.Id == guid);
+            Assert.True(contaRequisicao.Id == id);
         }
 
         [Fact]
@@ -91,6 +91,82 @@ namespace TesteSebrae.ServicosTesteUnitario
 
             // Assert
             Assert.StrictEqual(resultado, resultadoEsperado);
+        }
+
+        [Fact]
+        public async Task Deleta_ExisteIdNaBase_RetornaTrue()
+        {
+            // Arrange
+            var id = Guid.NewGuid();
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.Deleta(id, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(true);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.Deleta(id);
+
+            // Assert
+            Assert.True(resultado);
+        }
+
+        [Fact]
+        public async Task Deleta_NaoExisteIdNaBase_RetornaFalse()
+        {
+            // Arrange
+            var id = Guid.NewGuid();
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.Deleta(id, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(false);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.Deleta(id);
+
+            // Assert
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task Deleta_ExisteContaNaBase_RetornaTrue()
+        {
+            // Arrange
+            var contaFake = ContaDadosFake.ContaFake();
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.Deleta(contaFake, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(true);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.Deleta(contaFake);
+
+            // Assert
+            Assert.True(resultado);
+        }
+
+        [Fact]
+        public async Task Deleta_NaoExisteContaNaBase_RetornaFalse()
+        {
+            // Arrange
+            var contaFake = ContaDadosFake.ContaFake();
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.Deleta(contaFake, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(false);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.Deleta(contaFake);
+
+            // Assert
+            Assert.False(resultado);
         }
     }
 }
