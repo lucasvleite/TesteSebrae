@@ -68,7 +68,29 @@ namespace TesteSebrae.ServicosTesteUnitario
             var resultado = await servico.BuscaTodos();
 
             // Assert
-            Assert.True(resultado == resultadoEsperado);
+            Assert.StrictEqual(resultado, resultadoEsperado);
+        }
+
+        [Fact]
+        public async Task BuscaTodosPaginado_RetornaContasPaginado()
+        {
+            // Arrange
+            var contasFake = ContaDadosFake.ContasFake(20);
+            int quantidadeIgnorar = 5;
+            int quantidadePegar = 10;
+            var resultadoEsperado = contasFake.Skip(quantidadeIgnorar).Take(quantidadePegar);
+
+            var repositorioSimulado = new Mock<IContaRepositorio>();
+            repositorioSimulado.Setup(m => m.BuscaTodosPaginado(quantidadeIgnorar, quantidadePegar, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(resultadoEsperado);
+
+            var servico = new ContaServico(repositorioSimulado.Object);
+
+            // Act
+            var resultado = await servico.BuscaTodosPaginado(quantidadeIgnorar, quantidadePegar);
+
+            // Assert
+            Assert.StrictEqual(resultado, resultadoEsperado);
         }
     }
 }
