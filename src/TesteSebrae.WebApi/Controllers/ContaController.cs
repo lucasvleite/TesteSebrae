@@ -50,6 +50,7 @@ namespace TesteSebrae.WebApi.Controllers
         /// <returns></returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(IEnumerable<ContaResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Procura(Guid id)
@@ -61,8 +62,13 @@ namespace TesteSebrae.WebApi.Controllers
                     return BadRequest();
                 }
 
-                ContaResponse resultado = await _servico.ProcuraPeloId(id);
-                return Ok(resultado);
+                var resultado = await _servico.ProcuraPeloId(id);
+                if (resultado == null)
+                {
+                    return NoContent();
+                }
+
+                return Ok((ContaResponse)resultado);
             }
             catch (Exception e)
             {

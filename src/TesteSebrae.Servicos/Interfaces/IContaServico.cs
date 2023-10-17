@@ -16,6 +16,6 @@ namespace TesteSebrae.Servicos.Interfaces
 
         Task<bool> Deleta(Conta conta);
 
-        Task<Conta> ProcuraPeloId(Guid id);
+        Task<Conta?> ProcuraPeloId(Guid id);
     }
 }

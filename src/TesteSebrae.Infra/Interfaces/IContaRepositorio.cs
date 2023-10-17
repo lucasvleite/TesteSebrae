@@ -6,7 +6,7 @@ namespace TesteSebrae.Infra.Interfaces
     {
         Task<IEnumerable<Conta>> BuscaTodos(CancellationToken cancellationToken = default);
 
-        Task<IEnumerable<Conta>> BuscaTodosPaginado(int quandiadeIgnorar, int quantidadePegar,
+        Task<IEnumerable<Conta>> BuscaTodosPaginado(int quantidadeIgnorar, int quantidadePegar,
             CancellationToken cancellationToken = default);
     }
 }

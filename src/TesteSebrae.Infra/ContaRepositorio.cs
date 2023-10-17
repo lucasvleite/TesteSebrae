@@ -15,10 +15,10 @@ namespace TesteSebrae.Infra
             return await Tabela.ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Conta>> BuscaTodosPaginado(int quandiadeIgnorar, int quantidadePegar,
+        public async Task<IEnumerable<Conta>> BuscaTodosPaginado(int quantidadeIgnorar, int quantidadePegar,
             CancellationToken cancellationToken = default)
         {
-            return await Tabela.Skip(quandiadeIgnorar).Take(quantidadePegar)
+            return await Tabela.Skip(quantidadeIgnorar).Take(quantidadePegar)
                 .ToListAsync(cancellationToken);
         }
     }
