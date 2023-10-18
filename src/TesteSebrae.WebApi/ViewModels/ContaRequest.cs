@@ -4,8 +4,8 @@ namespace TesteSebrae.WebApi.ViewModels
 {
     public class ContaRequest
     {
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
 
 
         public static implicit operator Conta(ContaRequest request)

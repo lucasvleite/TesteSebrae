@@ -1,0 +1,34 @@
+@page
+@model BaltaTest.Pages_Contas.DeletaModel
+
+@{
+    ViewData["Title"] = "Deleta";
+}
+
+<h1>Deleta</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Conta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Conta.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Conta.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Conta.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Conta.Descricao)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Conta.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Principal">Back to List</a>
+    </form>
+</div>

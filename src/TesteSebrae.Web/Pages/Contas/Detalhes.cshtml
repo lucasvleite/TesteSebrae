@@ -1,0 +1,31 @@
+@page
+@model BaltaTest.Pages_Contas.DetalhesModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Conta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Conta.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Conta.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Conta.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Conta.Descricao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edita" asp-route-id="@Model.Conta?.Id">Edit</a> |
+    <a asp-page="./Principal">Back to List</a>
+</div>
