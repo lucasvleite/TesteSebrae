@@ -1,0 +1,42 @@
+@page
+@model BaltaTest.Pages_Contas.PrincipalModel
+
+@{
+    ViewData["Title"] = "Principal";
+}
+
+<h1>Principal</h1>
+
+<p>
+    <a asp-page="Insere">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Conta[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conta[0].Descricao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Conta) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                <a asp-page="./Edita" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Detalhes" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Deleta" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
