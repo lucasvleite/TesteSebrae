@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  testesebrae.web:
+    image: ${DOCKER_REGISTRY-}testesebraeweb
+    build:
+      context: .
+      dockerfile: src/TesteSebrae.Web/Dockerfile
+
+  testesebrae.webapi:
+    image: ${DOCKER_REGISTRY-}testesebraewebapi
+    build:
+      context: .
+      dockerfile: src/TesteSebrae.WebApi/Dockerfile
+

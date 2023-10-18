@@ -8,6 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/TesteSebrae.WebApi/TesteSebrae.WebApi.csproj", "src/TesteSebrae.WebApi/"]
+COPY ["src/TesteSebrae.Dominio/TesteSebrae.Dominio.csproj", "src/TesteSebrae.Dominio/"]
+COPY ["src/TesteSebrae.Servicos/TesteSebrae.Servicos.csproj", "src/TesteSebrae.Servicos/"]
+COPY ["src/TesteSebrae.Infra/TesteSebrae.Infra.csproj", "src/TesteSebrae.Infra/"]
 RUN dotnet restore "src/TesteSebrae.WebApi/TesteSebrae.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/TesteSebrae.WebApi"
