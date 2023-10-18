@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teste", "teste", "{8828CFC0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteSebrae.ServicosTesteUnitario", "test\TesteSebrae.ServicosTesteUnitario\TesteSebrae.ServicosTesteUnitario.csproj", "{F12AB3BB-4931-4F23-BEF2-A838E389907D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSebrae.Web", "src\TesteSebrae.Web\TesteSebrae.Web.csproj", "{5D75BCD0-A2A1-4599-8007-B8685DA4A931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteSebrae.Web", "src\TesteSebrae.Web\TesteSebrae.Web.csproj", "{5D75BCD0-A2A1-4599-8007-B8685DA4A931}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B789143D-4A19-4365-BD45-44F924023790}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{5D75BCD0-A2A1-4599-8007-B8685DA4A931}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D75BCD0-A2A1-4599-8007-B8685DA4A931}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D75BCD0-A2A1-4599-8007-B8685DA4A931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B789143D-4A19-4365-BD45-44F924023790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B789143D-4A19-4365-BD45-44F924023790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B789143D-4A19-4365-BD45-44F924023790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B789143D-4A19-4365-BD45-44F924023790}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
