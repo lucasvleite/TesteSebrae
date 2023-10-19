@@ -5,7 +5,7 @@ name: Avaliacao tecnica Sebrae
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "dev", "ActionsGitHub" ]
   pull_request:
     branches: [ "dev" ]
 
@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore TesteSebrae.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build TesteSebrae.sln --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test TesteSebrae.sln --no-build --verbosity normal
